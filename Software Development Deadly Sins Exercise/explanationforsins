@@ -22,6 +22,7 @@ By setting cookies to be both HttpOnly and Secure, I was able to make sure that
 I resolved sin 2 and 3 at the same time, since with HTTPOnly and secure, I'm also
 able to make sure that the cookies are unmodifiable and more secure against scripting.
 Although I was able to secure the cookie that way, I was not able to make it context dependent.
+The "PHPSESSID" Cookie now has both attributes ticked.
 
 For 6, I was able to resolve this sin by making sure that the data the website receives
 from the form was filtered and validated, to make sure the form doesn't fall victim to
@@ -31,6 +32,9 @@ My choice of filtering the data was preparatory/parameterized statements which y
 see from line 27 - 58. This makes sure that the SQL statements are prepared and that will
 be the only SQL statements read, completely seperating the STATEMENT from the DATA which
 will be received.
+
+I tried the "' OR '1'='1 " query with stmt and without stmt. The one without returned all the 
+rows of my database, whereas the one with only returned what was asked.
 
 							I wasn't able to address: [1, 4, 5]
 
