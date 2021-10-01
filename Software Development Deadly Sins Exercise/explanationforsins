@@ -1,1 +1,44 @@
+SINS:
 
+1.) using magic inputs to authenticate
+
+2.) modifiable cookies/sessions that are context independent
+
+3.) not using using httponly and secure
+
+4.) taking the whole context of your query 
+
+5.) hard coding your query / not modularizing code
+
+6.) not validating datatypes / user inputs
+
+
+							I chose to address [2, 3, and 6]:
+
+For 2 and 3, I was able to address that via line 2 - 4 in ProjectDBFile.php
+By setting cookies to be both HttpOnly and Secure, I was able to make sure that
+I resolved sin 2 and 3 at the same time, since with HTTPOnly and secure, I'm also
+able to make sure that the cookies are unmodifiable and more secure against scripting.
+Although I was able to secure the cookie that way, I was not able to make it context dependent.
+
+For 6, I was able to resolve this sin by making sure that the data the website receives
+from the form was filtered and validated, to make sure the form doesn't fall victim to
+attacks such as SQL Injections. 
+
+My choice of filtering the data was preparatory/parameterized statements which you can
+see from line 27 - 58. This makes sure that the SQL statements are prepared and that will
+be the only SQL statements read, completely seperating the STATEMENT from the DATA which
+will be received.
+
+							I wasn't able to address: [1, 4, 5]
+
+1.) Because so far, whenever I made simple registration forms, I have never used hidden forms,
+    so I can't make an example out of it in this. But I have used hidden forms to get and validate
+    data in other modules such as in an inventory system login and other parts of it, which I now know
+    I shouldn't have done because it can just be seen via inspect element.
+
+4.) This was via the local storage if I remember correctly. Up until now, I never knew about local storate
+    and don't know how to manipulate it, and how to use it in tandem with a registration form.
+
+5.) I've hard coded everything I made so far in my life in this course, This is the first time I've heard
+    about this, and personally I think this one is the most interesting yet also the hardest to apply for me.
