@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+//C PROGRAM--------------------------------------------------------------------------------------//
+
+	int e = 7; //already given
+	int d = 223; //same as e
+	int n = 11*13; //p*q
+	long double temp; //for calculation purposes
+	int x;
+	void RSA_Encryption(char plaintext[50]);
+	void RSA_Decryption(char plaintext[50]);
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+	char plaintext[50]; //Plaintext Message Container
+	scanf("%s", &plaintext);
+	plaintext[strlen(plaintext)] = '\0'; //sentinel value
+	RSA_Encryption(plaintext);
+	
+	return 0;
+}
+
+void RSA_Encryption(char plaintext[50]){
+	for(x = 0; plaintext[x]!='\0'; x++){
+		temp = pow(plaintext[x], e);
+		temp = fmod(temp, n);
+		plaintext[x] = temp;
+		if(temp > 33){
+		printf("%c", plaintext[x]);
+		}else{
+			printf(" (UNPRINTABLE) ");
+		}
+	}
+	RSA_Decryption(plaintext);
+	printf("\n");
+}
+
+void RSA_Decryption(char plaintext[50]){
+	for(x = 0; plaintext[x]!='\0'; x++){
+		temp = pow(plaintext[x], d);
+		temp = fmod(temp, n);
+		plaintext[x] = temp;
+		printf("%c", plaintext[x]);
+	}
+	printf("\n");
+}
